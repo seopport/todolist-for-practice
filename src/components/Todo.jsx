@@ -45,7 +45,7 @@ function Todo({ todo, setTodo, isDone }) {
                     <div style={{ width: "250px", border: "1px solid white" }}>
                         {isDone === false ? "진행중" : "완료됨"}
                         <div key={item.id}>
-                            {item.title} - {item.memo}
+                            {item.title} - {item.contents}
                             {!item.isDone
                                 ? <><button onClick={() => handleDoneButtonClick(item.id)}>완료</button>
                                     <button onClick={() => handleDeleteButtonClick(item.id)}>삭제</button></>

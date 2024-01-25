@@ -8,7 +8,7 @@ function Layout() {
     const [todo, setTodo] = useState([{
         id: 0,
         title: '',
-        memo: '',
+        contents: '',
         isDone: false
     }])
 
