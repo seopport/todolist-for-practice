@@ -3,7 +3,10 @@ import { nanoid } from 'nanoid'
 
 function InputArea({ todo, setTodo }) {
 
-    const box = { width: "400px", height: "200px", border: "1px solid navy" }
+    const box = {
+        width: "400px", height: "200px", border: "1px solid navy",
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"
+    }
 
     const [title, setTitle] = useState('')
     const [memo, setMemo] = useState('')
@@ -33,9 +36,9 @@ function InputArea({ todo, setTodo }) {
 
     return (
         <>
-            <div style={box}>
-                할일 타이틀 : <input type='text' value={title} onChange={handleTitleChange} /><br />
-                할일 메모 : <input type='text' value={memo} onChange={handleMemoChange} />
+            <div style={box}><strong>To Do List</strong><br />
+                할일 타이틀<input type='text' value={title} onChange={handleTitleChange} /><br />
+                할일 메모<input type='text' value={memo} onChange={handleMemoChange} />
                 <br /><button onClick={handleAddButtonClick}>추가</button>
             </div>
         </>

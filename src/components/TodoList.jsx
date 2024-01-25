@@ -10,10 +10,10 @@ function TodoList({ todo, setTodo }) {
 
     return (
         <div>
-            <div style={inProgress}>
+            <div style={inProgress}><strong>진행중인 과제</strong>
                 <Todo todo={todo} setTodo={setTodo} isDone={false} />
             </div>
-            <div style={done}>
+            <div style={done}><strong>완료된 과제</strong>
                 <Todo todo={todo} setTodo={setTodo} isDone={true} />
             </div>
         </div>
