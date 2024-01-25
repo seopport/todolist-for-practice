@@ -12,6 +12,14 @@ function InputArea({ todo, setTodo }) {
     const handleMemoChange = (e) => { setMemo(e.target.value) }
 
     const handleAddButtonClick = () => {
+        if (title.trim() === '') {
+            alert('할일을 입력하세요.')
+            return;
+        }
+        if (memo.trim() === '') {
+            if (!window.confirm('메모를 입력하지 않고 추가하시겠습니까?'))
+                return;
+        }
         const newTodo = {
             id: nanoid(),
             title,

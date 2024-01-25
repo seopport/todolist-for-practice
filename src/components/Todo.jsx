@@ -27,10 +27,12 @@ function Todo({ todo, setTodo, isDone }) {
     }
 
     const handleDeleteButtonClick = (id) => {
-        const newTodo = todo.filter((item) => {
-            return item.id !== id
-        })
-        setTodo(newTodo)
+        if (window.confirm("삭제하시겠습니까?")) {
+            const newTodo = todo.filter((item) => {
+                return item.id !== id
+            })
+            setTodo(newTodo)
+        }
     }
 
     return (
