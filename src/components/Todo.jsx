@@ -1,9 +1,8 @@
 import React from 'react'
 
-function Todo({ todo, setTodo }) {
+function Todo({ todo, setTodo, isDone }) {
 
     const handleDoneButtonClick = (id) => {
-        //isDone을 true로 변경
         const newTodo = todo.map((item) => {
             if (id === item.id) {
                 return {
@@ -35,41 +34,32 @@ function Todo({ todo, setTodo }) {
     }
 
     return (
-        <div style={{ display: "flex" }}>
-            <div style={{ width: "200px", border: "1px solid orange" }}>
-                추가된 할일
-                {
-                    todo.filter((item) => {
-                        return item.isDone === false && item.id !== 0
-                    }).map((item) => {
+        <>
+            {todo.filter((item) => {
+                return item.id !== 0 && isDone === item.isDone
+            }).map((item) => {
+                return (
 
-                        return (
-                            <div key={item.id}>
-                                {item.title} - {item.memo}
-                                <button onClick={() => handleDoneButtonClick(item.id)}>완료</button>
-                                <button onClick={() => handleDeleteButtonClick(item.id)}>삭제</button>
-                            </div>
-                        )
-
-                    })}
-            </div>
-            <div style={{ width: "200px", border: "1px solid orange" }}>
-                완료된 할일
-                {todo.filter((item) => {
-                    return item.isDone === true
-                }).map((item) => {
-
-                    return (
+                    <div style={{ width: "250px", border: "1px solid white" }}>
+                        {isDone === false ? "진행중" : "완료됨"}
                         <div key={item.id}>
                             {item.title} - {item.memo}
-                            <button onClick={() => handleReturnButtonClick(item.id)}>되돌리기</button>
-                            <button onClick={() => handleDeleteButtonClick(item.id)}>삭제</button>
+                            {!item.isDone
+                                ? <><button onClick={() => handleDoneButtonClick(item.id)}>완료</button>
+                                    <button onClick={() => handleDeleteButtonClick(item.id)}>삭제</button></>
+                                :
+                                <>
+                                    <button onClick={() => handleReturnButtonClick(item.id)}>되돌리기</button>
+                                    <button onClick={() => handleDeleteButtonClick(item.id)}>삭제</button></>
+                            }
                         </div>
-                    )
+                    </div>
 
-                })}
-            </div>
-        </div>
+                )
+            })
+
+            }
+        </>
     )
 }
 

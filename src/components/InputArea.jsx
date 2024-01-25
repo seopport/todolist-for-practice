@@ -3,11 +3,10 @@ import { nanoid } from 'nanoid'
 
 function InputArea({ todo, setTodo }) {
 
-    const box = { width: "500px", height: "200px", border: "1px solid navy" }
+    const box = { width: "400px", height: "200px", border: "1px solid navy" }
 
     const [title, setTitle] = useState('')
     const [memo, setMemo] = useState('')
-
 
     const handleTitleChange = (e) => { setTitle(e.target.value) }
     const handleMemoChange = (e) => { setMemo(e.target.value) }
@@ -20,6 +19,8 @@ function InputArea({ todo, setTodo }) {
             isDone: false
         }
         setTodo([...todo, newTodo])
+        setTitle('');
+        setMemo('');
     }
 
     return (
